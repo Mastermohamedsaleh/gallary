@@ -21,7 +21,7 @@
   
                       <span class="h1 fw-bold  text-center">سجل الدخول </span>
                 
-                  <div class="main-signup-header">
+                  <div class="main-signup-header text-center">
                                          
                                             @if ($errors->any())
                                                 <div class="alert alert-danger mt-3">
@@ -43,10 +43,14 @@
                                                     <div class="form-group">
                                                         <label>الاميل</label> <input  class="form-control" placeholder="Enter your email" type="email" name="email" :value="old('email')" required autofocus>
                                                     </div>
+
                                                     <div class="form-group">
                                                         <label>الباسورد</label> <input class="form-control" placeholder="Enter your password"   type="password"name="password" required autocomplete="current-password" >
-                                                    </div><button type="submit" class="btn btn-primary mt-3" style="background-color:#3c8dbc">سجل</button>
-                                                  
+                                                    </div>
+                                                    
+                                      <button type="submit" class="btn btn-primary mt-3" style="background-color:#3c8dbc">سجل</button>
+                                      
+
                                             </div>
                                             </form>
 
@@ -70,7 +74,7 @@
 
 
 
-
+</section>
 
 
 

@@ -8,7 +8,7 @@ use App\Http\Controllers\ProdectController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SettingController;
-
+use App\Http\Controllers\BarcodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,8 +55,12 @@ Route::group(
 
          
 
+    Route::post('/fetch-product', [BarcodeController::class, 'fetchProduct']);
+    Route::get('/orderclient', [BarcodeController::class, 'orderclient']);
+    Route::post('/save-order', [BarcodeController::class, 'saveOrder']);
 
-
+    Route::post('/fetch-product-code', [BarcodeController::class, 'fetchProductByCode']);
+Route::post('/fetch-product-name', [BarcodeController::class, 'fetchProductByName']);
 
 // Order
         Route::controller(OrderController::class)->group(function() { 

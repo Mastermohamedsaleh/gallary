@@ -38,33 +38,27 @@ class ProdectController extends Controller
              
         $request->validate([
             'name' => 'required',
-        
             'category_id' => 'required',
             'purchase_price' => 'required|min:1',
             'sale_price' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'stock'=>'required'
+            'stock'=>'required',
+            'barcode' => 'required|numeric',
         ]);
 
 
-
-
         $imageName = time().'.'.$request->image->extension(); 
-
         $products =  new Prodect();
-
         $products->image =   $imageName;
         $products->category_id = $request->category_id;
         $products->name = $request->name;
-      
         $products->sale_price = $request->sale_price;
         $products->purchase_price = $request->purchase_price;
         $products->stock = $request->stock;
+        $products->barcode = $request->barcode;
         $products->save();
-
         $request->image->move(public_path('uploads/products'), $imageName);
-
-        session()->flash('success', __('site.added_successfully'));
+        session()->flash('success', 'تم اضافه بنجاح');
         return redirect()->route('prodects.index');
 
          
@@ -93,17 +87,11 @@ class ProdectController extends Controller
     {
  
         $product = Prodect::findorfail($id);
-
         $product->category_id = $request->category_id;
         $product->name = $request->name;
-      
         $product->sale_price = $request->sale_price;
         $product->purchase_price = $request->purchase_price;
         $product->stock = $request->stock;
-
-
-
-
  
         if($request->hasfile('image')){
             $path = 'uploads/products/'.$request->old_image;
@@ -120,7 +108,7 @@ class ProdectController extends Controller
         
         $product->update();
  
-        session()->flash('success', __('site.updated_successfully'));
+        session()->flash('success', "تم التعديل بنجاح");
         return redirect()->route('prodects.index');
             
 
@@ -135,8 +123,8 @@ class ProdectController extends Controller
             File::delete(public_path('uploads/products/'.$request->old_image));
             }
          
-            session()->flash('success', __('site.deleted_successfully'));
-            return redirect()->route('prodects .index');
+            session()->flash('success', "تم الحذف بنجاح");
+            return redirect()->route('prodects.index');
      
     }
 }

@@ -65,7 +65,9 @@
                                 <th>سعر الشراء</th>
                                 <th>سعر البيع</th>
                                 <th>العدد</th>
+                                <th>الكود</th>
                                 <th>العمليات</th>
+                          
                             </tr>
                             </thead>
                             
@@ -79,6 +81,7 @@
                                     <td>{{ $product->purchase_price }}</td>
                                     <td>{{ $product->sale_price }}</td>
                                     <td>{{ $product->stock }}</td>
+                                    <td>{{ $product->barcode }}</td>
                                     <td>
                                         @if (auth()->user()->hasPermission('products_update'))
                                             <a href="{{ route('prodects.edit', $product->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> تعديل</a>

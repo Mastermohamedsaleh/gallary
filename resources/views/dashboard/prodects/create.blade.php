@@ -79,6 +79,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label>الكود</label>
+                            <input type="text" name="barcode" class="form-control" value="{{ old('barcode') }}">
+                        </div>
+
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> اضافه</button>
                         </div>
 
