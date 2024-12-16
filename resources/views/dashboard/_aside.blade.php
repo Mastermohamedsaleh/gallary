@@ -45,11 +45,11 @@
            @endif
 
            @if(auth()->user()->hasPermission('orders_read'))
-           <li><a href="{{URL('orderclient')}}"><i class="fa fa-th"></i><span>مرتجع بيع</span></a></li>         
+           <li><a href="{{URL('returnorderclient')}}"><i class="fa fa-th"></i><span>مرتجع بيع</span></a></li>         
            @endif
 
            @if(auth()->user()->hasPermission('orders_read'))
-           <li><a href=""><i class="fa fa-th"></i><span>الخزنه</span></a></li>         
+           <li><a href="{{URL('cash')}}"><i class="fa fa-th"></i><span>الخزنه</span></a></li>         
            @endif
 
 

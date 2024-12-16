@@ -77,13 +77,13 @@
                             <div class="nav-tabs-custom">
 
                                 @php
-                                    $models = ['users', 'categories', 'products', 'clients', 'orders'];
-                                    $maps = ['create', 'read', 'update', 'delete'];
+                                    $models = ['المشرفين', 'الاقسام', 'المنتجات', 'العملاء', 'الطلبات','مرتجع البيع','الخزنه'];
+                                    $maps = ['اضافه', 'قرأه', 'تعديل', 'حذف'];
                                 @endphp
 
                                 <ul class="nav nav-tabs">
                                     @foreach ($models as $index=>$model)
-                                        <li class="{{ $index == 0 ? 'active' : '' }}"><a href="#{{ $model }}" data-toggle="tab">@lang('site.' . $model)</a></li>
+                                        <li class="{{ $index == 0 ? 'active' : '' }}"><a href="#{{ $model }}" data-toggle="tab">{{$model}}</a></li>
                                     @endforeach
                                 </ul>
 
@@ -94,7 +94,7 @@
                                         <div class="tab-pane {{ $index == 0 ? 'active' : '' }}" id="{{ $model }}">
 
                                             @foreach ($maps as $map)
-                                                <label><input type="checkbox" name="permissions[]" value="{{ $model . '_' . $map  }}"> @lang('site.' . $map)</label>
+                                                <label><input type="checkbox" name="permissions[]" value="{{ $model . '_' . $map  }}"> {{ $map}}</label>
                                             @endforeach
 
                                         </div>
@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.add')</button>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>اضافه</button>
                         </div>
 
                     </form><!-- end of form -->

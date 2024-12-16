@@ -3,22 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Prodect;
 use App\Models\CashVaultLog;
 use Illuminate\Support\Facades\DB;
 
-class BarcodeController extends Controller
-{ 
-
-
-
-
-    public function orderclient()
+class ReturnOrderController extends Controller
+{
+  
+    public function returnorder()
     {
-        return view('dashboard.orderclient.orderclient');
+        return view('dashboard.returnorderclient.returnorderclient');
     }
-
+ 
+  
     public function fetchProductByCode(Request $request)
     {
 
@@ -40,37 +37,23 @@ class BarcodeController extends Controller
         return response()->json(['message' => 'Product not found'], 404);
     }
     return response()->json(['product' => $product]);
-}
+  }
 
-    public function saveOrder(Request $request)
-{
- 
 
+
+    public function savereturnorder(Request $request)
+    {
     
-
-    // $request->validate([
-    //     'products' => 'required|array',
-    //     'products.*.code' => 'required|string|exists:products,code',
-    //     'products.*.quantity' => 'required|integer|min:1',
-    // ]);
-
-    // $totalPrice = $request->input('totalPrice');
-
        // بدء معاملة قاعدة البيانات
        DB::beginTransaction();
 
     foreach ($request->products as $productData) {
         $product = Prodect::where('barcode', $productData['barcode'])->first();
 
-        // التحقق من توفر الكمية
-        if ($productData['quantity'] > $product->stock) {
-            return response()->json([
-                'message' => "Not enough stock for product {$product->name}."
-            ], 400);
-        }
+
 
         // خصم الكمية المطلوبة
-        $product->stock -= $productData['quantity'];
+        $product->stock += $productData['quantity'];
         $product->save();
 
 
@@ -78,7 +61,7 @@ class BarcodeController extends Controller
         
              $amount = CashVaultLog::where('id',1)->first();
               
-             $amount->amount += $request->totalPrice ;
+             $amount->amount -= $request->totalPrice ;
             
              $amount->update();
 
@@ -92,5 +75,5 @@ class BarcodeController extends Controller
 
     return response()->json(['message' => 'Order saved successfully!']);
 }
-
+     
 }

@@ -9,6 +9,8 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\BarcodeController;
+use App\Http\Controllers\CashController;
+use App\Http\Controllers\ReturnOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,14 +55,24 @@ Route::group(
         //  Clients
          Route::resource('clients',ClientController::class);
 
-         
+ // الخزنه 
+
+    Route::get('/cash', [CashController::class, 'cash']);
+    Route::get('/withdraw', [CashController::class, 'withdraw']);
+ // الخزنه 
+
+   // orderruturn 
+   Route::get('/returnorderclient', [ReturnOrderController::class, 'returnorder']);
+   Route::post('/savereturnorder', [ReturnOrderController::class, 'savereturnorder']);
+
+   // orderruturn 
 
     Route::post('/fetch-product', [BarcodeController::class, 'fetchProduct']);
     Route::get('/orderclient', [BarcodeController::class, 'orderclient']);
     Route::post('/save-order', [BarcodeController::class, 'saveOrder']);
 
     Route::post('/fetch-product-code', [BarcodeController::class, 'fetchProductByCode']);
-Route::post('/fetch-product-name', [BarcodeController::class, 'fetchProductByName']);
+    Route::post('/fetch-product-name', [BarcodeController::class, 'fetchProductByName']);
 
 // Order
         Route::controller(OrderController::class)->group(function() { 

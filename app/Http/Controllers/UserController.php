@@ -78,7 +78,7 @@ class UserController extends Controller
         $user->syncPermissions($request->permissions);
          
 
-        session()->flash('success', __('site.added_successfully'));
+        session()->flash('success', 'اضافه ادمن بنجاح');
         return redirect()->route('users.index');
 
 
