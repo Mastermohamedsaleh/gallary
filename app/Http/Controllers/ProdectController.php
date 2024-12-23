@@ -41,15 +41,15 @@ class ProdectController extends Controller
             'category_id' => 'required',
             'purchase_price' => 'required|min:1',
             'sale_price' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'stock'=>'required',
             'barcode' => 'required|numeric',
         ]);
 
 
-        $imageName = time().'.'.$request->image->extension(); 
+        // $imageName = time().'.'.$request->image->extension(); 
         $products =  new Prodect();
-        $products->image =   $imageName;
+        // $products->image =   $imageName;
         $products->category_id = $request->category_id;
         $products->name = $request->name;
         $products->sale_price = $request->sale_price;
@@ -57,9 +57,9 @@ class ProdectController extends Controller
         $products->stock = $request->stock;
         $products->barcode = $request->barcode;
         $products->save();
-        $request->image->move(public_path('uploads/products'), $imageName);
+        // $request->image->move(public_path('uploads/products'), $imageName);
         session()->flash('success', 'تم اضافه بنجاح');
-        return redirect()->route('prodects.index');
+        return redirect()->back();
 
          
     }
@@ -93,18 +93,18 @@ class ProdectController extends Controller
         $product->purchase_price = $request->purchase_price;
         $product->stock = $request->stock;
  
-        if($request->hasfile('image')){
-            $path = 'uploads/products/'.$request->old_image;
-            if(File::exists($path)){
-                File::delete($path);
-            }
-            $imageName = time().'.'.$request->image->extension(); 
+        // if($request->hasfile('image')){
+        //     $path = 'uploads/products/'.$request->old_image;
+        //     if(File::exists($path)){
+        //         File::delete($path);
+        //     }
+        //     $imageName = time().'.'.$request->image->extension(); 
 
-            $product->image = $imageName;
+        //     $product->image = $imageName;
              
-           $request->image->move(public_path('uploads/products'), $imageName);
+        //    $request->image->move(public_path('uploads/products'), $imageName);
 
-        }
+        // }
         
         $product->update();
  
@@ -119,9 +119,9 @@ class ProdectController extends Controller
     {
        $product = Prodect::findorfail($id);
        $product->delete();
-        if(File::exists(public_path('uploads/products/'.$request->old_image))){
-            File::delete(public_path('uploads/products/'.$request->old_image));
-            }
+        // if(File::exists(public_path('uploads/products/'.$request->old_image))){
+        //     File::delete(public_path('uploads/products/'.$request->old_image));
+        //     }
          
             session()->flash('success', "تم الحذف بنجاح");
             return redirect()->route('prodects.index');

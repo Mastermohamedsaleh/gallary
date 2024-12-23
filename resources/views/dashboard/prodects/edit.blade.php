@@ -47,18 +47,9 @@
                         
 
 
-                        <div class="form-group">
-                            <label>الصوره</label>
-                            <input type="file" name="image" class="form-control image">
-                        </div>
 
-                        <div class="form-group">
-                            <input type="hidden" name="old_image" class="form-control image" value="{{$product->image}}">
-                        </div>
+ 
 
-                        <div class="form-group">
-                            <img src="{{ asset('uploads/products/'.$product->image) }}" style="width: 100px" class="img-thumbnail image-preview" alt="">
-                        </div>
 
                         <div class="form-group">
                             <label>سعر الشراء</label>

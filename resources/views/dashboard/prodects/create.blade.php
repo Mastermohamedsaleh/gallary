@@ -32,6 +32,11 @@
         </ul>
     </div>
 @endif
+
+@if(Session::has('success'))
+<p class="alert alert-info">{{ Session::get('success') }}</p>
+@endif
+
                     <form action="{{ route('prodects.store') }}" method="post" enctype="multipart/form-data">
 
                         @csrf
@@ -56,10 +61,10 @@
                 
                  
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>الصوره</label>
                             <input type="file" name="image" class="form-control image">
-                        </div>
+                        </div> -->
 
                 
 

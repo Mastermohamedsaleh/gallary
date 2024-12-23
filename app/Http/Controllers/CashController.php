@@ -8,13 +8,11 @@ use App\Models\CashVaultLog;
 
 
 class CashController extends Controller
-{
-      
+{ 
     public function cash() 
     {
-        $amount = CashVaultLog::where('id',1)->first();
-              
-      $amount =  $amount->amount ;
+        $amount = CashVaultLog::where('id',1)->first();       
+        $amount =  $amount->amount ;
         return  view('dashboard.cash.cash',compact('amount')) ;
     }
 
@@ -25,5 +23,4 @@ class CashController extends Controller
         $amount->update();
          return redirect()->back();
     }
-     
 }

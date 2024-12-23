@@ -34,9 +34,7 @@
            @if(auth()->user()->hasPermission('products_read'))
            <li><a href="{{URL('prodects')}}"><i class="fa fa-th"></i><span>المنتجات</span></a></li>         
            @endif
-           @if(auth()->user()->hasPermission('clients_read'))
-           <li><a href="{{URL('clients')}}"><i class="fa fa-th"></i><span>العملاء</span></a></li>         
-           @endif
+
 
 
 
@@ -52,9 +50,9 @@
            <li><a href="{{URL('cash')}}"><i class="fa fa-th"></i><span>الخزنه</span></a></li>         
        
 
-           @if(auth()->user()->hasPermission('win_read'))
-           <li><a href="{{URL('win')}}"><i class="fa fa-th"></i><span>مكسب اليوم</span></a></li>         
-           @endif
+           
+           <li><a href="{{URL('gain')}}"><i class="fa fa-th"></i><span>مكسب اليوم</span></a></li>         
+         
 
 
 

@@ -11,7 +11,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\BarcodeController;
 use App\Http\Controllers\CashController;
 use App\Http\Controllers\ReturnOrderController;
-use App\Http\Controllers\winController;
+use App\Http\Controllers\GainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,9 +62,10 @@ Route::group(
     Route::get('/withdraw', [CashController::class, 'withdraw']);
  // الخزنه 
 
-  // win
-    Route::get('/win', [winController::class, 'win']);
-  // win 
+  // gain
+    Route::get('/gain', [GainController::class, 'gain']);
+    Route::get('/zerogain', [GainController::class, 'zerogain']);
+  // gain
 
   
    // orderruturn 

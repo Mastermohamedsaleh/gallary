@@ -61,7 +61,7 @@
                                 <th>#</th>
                                 <th>الاسم</th>
                                 <th>القسم</th>
-                                <th>الصوره</th>
+                                <!-- <th>الصوره</th> -->
                                 <th>سعر الشراء</th>
                                 <th>سعر البيع</th>
                                 <th>العدد</th>
@@ -77,7 +77,7 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->category->name }}</td>
-                                    <td><img src="{{ asset('uploads/products/'.$product->image) }}" style="width: 100px"  class="img-thumbnail" alt=""></td>
+                                    <!-- <td><img src="{{ asset('uploads/products/'.$product->image) }}" style="width: 100px"  class="img-thumbnail" alt=""></td> -->
                                     <td>{{ $product->purchase_price }}</td>
                                     <td>{{ $product->sale_price }}</td>
                                     <td>{{ $product->stock }}</td>
