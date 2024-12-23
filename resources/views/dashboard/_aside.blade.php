@@ -40,16 +40,20 @@
 
 
 
-           @if(auth()->user()->hasPermission('orders_read'))
+         
            <li><a href="{{URL('orderclient')}}"><i class="fa fa-th"></i><span>بيع</span></a></li>         
-           @endif
+ 
 
-           @if(auth()->user()->hasPermission('orders_read'))
+       
            <li><a href="{{URL('returnorderclient')}}"><i class="fa fa-th"></i><span>مرتجع بيع</span></a></li>         
-           @endif
+         
 
-           @if(auth()->user()->hasPermission('orders_read'))
+          
            <li><a href="{{URL('cash')}}"><i class="fa fa-th"></i><span>الخزنه</span></a></li>         
+       
+
+           @if(auth()->user()->hasPermission('win_read'))
+           <li><a href="{{URL('win')}}"><i class="fa fa-th"></i><span>مكسب اليوم</span></a></li>         
            @endif
 
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\BarcodeController;
 use App\Http\Controllers\CashController;
 use App\Http\Controllers\ReturnOrderController;
+use App\Http\Controllers\winController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,11 @@ Route::group(
     Route::get('/withdraw', [CashController::class, 'withdraw']);
  // الخزنه 
 
+  // win
+    Route::get('/win', [winController::class, 'win']);
+  // win 
+
+  
    // orderruturn 
    Route::get('/returnorderclient', [ReturnOrderController::class, 'returnorder']);
    Route::post('/savereturnorder', [ReturnOrderController::class, 'savereturnorder']);

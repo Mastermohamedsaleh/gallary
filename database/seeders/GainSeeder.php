@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CashSeeder extends Seeder
+class GainSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +14,8 @@ class CashSeeder extends Seeder
      */
     public function run()
     {
-        $cash = \App\Models\CashVaultLog::create([
-            'amount'=>'0.00',
+        $cash = \App\Models\Gain::create([
+            'profit_amount'=>'0.00',
         ]);
     }
 }

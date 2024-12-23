@@ -7,6 +7,9 @@ use App\Models\Prodect;
 use App\Models\CashVaultLog;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Gain;
+
+
 class ReturnOrderController extends Controller
 {
   
@@ -44,8 +47,7 @@ class ReturnOrderController extends Controller
     public function savereturnorder(Request $request)
     {
     
-       // بدء معاملة قاعدة البيانات
-       DB::beginTransaction();
+
 
     foreach ($request->products as $productData) {
         $product = Prodect::where('barcode', $productData['barcode'])->first();
@@ -59,19 +61,27 @@ class ReturnOrderController extends Controller
 
  
         
-             $amount = CashVaultLog::where('id',1)->first();
-              
-             $amount->amount -= $request->totalPrice ;
-            
-             $amount->update();
 
 
-        
-                DB::commit();
+
+      
 
 
 
     }
+    $amount = CashVaultLog::where('id',1)->first();
+    $amount->amount -= $request->totalPrice;
+    $amount->update();
+
+
+    $totalProfit = $request->input('totalProfit');
+  
+
+    // حفظ الربح في جدول الأرباح اليومية
+      $profit = Gain::where('id',1)->first();
+      $profit->profit_amount -= $totalProfit;  
+      $profit->update();
+
 
     return response()->json(['message' => 'Order saved successfully!']);
 }
