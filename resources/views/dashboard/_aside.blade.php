@@ -38,21 +38,21 @@
 
 
 
-         
+           @if(auth()->user()->hasPermission('orderclient_read'))
            <li><a href="{{URL('orderclient')}}"><i class="fa fa-th"></i><span>بيع</span></a></li>         
- 
+           @endif
 
-       
+           @if(auth()->user()->hasPermission('returnorderclient_read'))
            <li><a href="{{URL('returnorderclient')}}"><i class="fa fa-th"></i><span>مرتجع بيع</span></a></li>         
-         
+           @endif
 
-          
+           @if(auth()->user()->hasPermission('cash_read'))
            <li><a href="{{URL('cash')}}"><i class="fa fa-th"></i><span>الخزنه</span></a></li>         
-       
+           @endif
 
-           
+           @if(auth()->user()->hasPermission('gain_read'))
            <li><a href="{{URL('gain')}}"><i class="fa fa-th"></i><span>مكسب اليوم</span></a></li>         
-         
+           @endif
 
 
 

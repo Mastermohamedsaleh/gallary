@@ -20,5 +20,6 @@ class UserTableSeeder extends Seeder
             'password'=>bcrypt('123456789')
         ]);
         $user->attachRole('super_admin');
+        $user->attachRole('admin');
     }
 }

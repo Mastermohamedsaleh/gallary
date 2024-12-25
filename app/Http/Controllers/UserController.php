@@ -19,12 +19,11 @@ class UserController extends Controller
 
     public function __construct()
     {
-        //create read update delete
+      //create read update delete
         $this->middleware(['permission:users_read'])->only('index');
         $this->middleware(['permission:users_create'])->only('create');
         $this->middleware(['permission:users_update'])->only('edit');
         $this->middleware(['permission:users_delete'])->only('destroy');
-
     }//end of constructor
 
 
@@ -35,13 +34,10 @@ class UserController extends Controller
 
     public function index(Request $request)
     { 
-
-           
         if($request->search){      
             $users = User::whereRoleIs('admin')->where('name','like','%' . $request->search . '%' )->orwhere('email','like','%'.$request->search . '%')->latest()->paginate(PAGINATE_COUNT);
         }else{
             $users = User::whereRoleIs('admin')->paginate(PAGINATE_COUNT);
-
         }
          
 
@@ -79,7 +75,7 @@ class UserController extends Controller
          
 
         session()->flash('success', 'اضافه ادمن بنجاح');
-        return redirect()->route('users.index');
+        return redirect()->back();
 
 
 
@@ -121,8 +117,9 @@ class UserController extends Controller
 
         $user->save();
          
-        session()->flash('success', __('site.updated_successfully'));
+        session()->flash('success', 'تم التعديل بنجاح');
         return redirect()->route('users.index');
+        
  
 
     }
@@ -138,7 +135,7 @@ class UserController extends Controller
         }//end if
 
         $user->delete();
-        session()->flash('success', __('site.deleted_successfully'));
+        session()->flash('success', 'تم الحذف بنجاح');
         return redirect()->route('users.index');
         
     }//end destroy

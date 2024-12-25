@@ -17,10 +17,16 @@ return [
             'categories' => 'c,r,u,d',
             'products' => 'c,r,u,d',
             'clients' => 'c,r,u,d',
-            'clients' => 'c,r,u,d',
+             'gain'=> 'c,r,u,d',
+             'cash'=> 'c,r,u,d',
+             'returnorderclient'=>'c,r,u,d' ,
+             'orderclient'=> 'c,r,u,d',
             'orders' => 'c,r,u,d',
         ],
-        'admin'=>[],
+        'admin'=>[
+            'returnorderclient'=>'c,r,u,d' ,
+            'orderclient'=> 'c,r,u,d',
+        ],
     ],
 
     'permissions_map' => [
